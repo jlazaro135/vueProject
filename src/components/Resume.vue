@@ -19,7 +19,7 @@
     },
     methods: {
       imagePath: function(path){
-      return `src/assets/img${path}`;
+      return `/img${path}`;
       },
     },
   }

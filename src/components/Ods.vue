@@ -16,7 +16,7 @@ import Button from './Button.vue';
     },
     methods: {
     imagePath: function(id){
-      return `src/assets/img/S-WEB-Goal-${id}.png`;
+      return `img/S-WEB-Goal-${id}.png`;
     },
     SelectOds(e){
       this.error = null
