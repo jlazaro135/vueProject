@@ -1,5 +1,6 @@
 <script>
   import Button from './Button.vue'
+  let dataContact = localStorage.dataContact ? JSON.parse(localStorage.dataContact) : ''
   export default {
     name: "Form",
     components:{
@@ -9,9 +10,9 @@
       return {
         errors: [],
         dataContact: null,
-        name: null,
-        surname: null,
-        comments: null,
+        name: dataContact.name,
+        surname: dataContact.surname,
+        comments: dataContact.comments,
       }
     },
     methods:{
@@ -86,6 +87,7 @@
   </div>
   
   <Button @click="checkForm" textButton="Siguiente paso"></Button>
+  <router-link to="/resumen"></router-link>
 </template>
 
 <style scoped>

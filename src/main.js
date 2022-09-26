@@ -7,10 +7,14 @@ import Form from './components/Form.vue'
 import Ods from './components/Ods.vue'
 import Character from './components/Character.vue'
 import Resume from './components/Resume.vue'
+import Home from './components/Home.vue'
 
 
 // definir objetos rutas 
 const routes = [
+    {
+        path: '/', component: Home
+    },
     {
         path: '/contacto', component: Form
     },

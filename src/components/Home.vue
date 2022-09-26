@@ -1,77 +1,72 @@
 <script>
-    import {checkComments} from '../assets/js/utils'
-    let dataContact = JSON.parse(localStorage.dataContact)
-    let dataOds = JSON.parse(localStorage.dataOds)
-    let dataCharacter = JSON.parse(localStorage.dataCharacter)
   
     export default {
-      name: "Resume",
-      props: {
-      },
-      data(){
-        return {
-          name: dataContact.name,
-          surname: dataContact.surname,
-          comments: checkComments(dataContact.comments, 'No hay observaciones'),
-          ods: dataOds.dataOds,
-          characterName: dataCharacter.name,
-          characterImg: dataCharacter.img
+      name: "Home",
+      methods:{
+        destroyData(){
+            console.log('jelou')
+            let itemsToremove = ['dataCharacter', 'dataContact', 'dataOds']
+            itemsToremove.forEach(item => localStorage.removeItem(item))
         }
       },
-      methods: {
-        imagePath: function(path){
-        return `src/assets/img${path}`;
-        },
-      },
+      beforeMount(){
+        this.destroyData()
+      }
     }
     </script>
     
     <template>
         <h2>Prueba Frontend: APP en Vue</h2>
-        <img src="" alt="">
-        
+        <img src="https://upload.wikimedia.org/wikipedia/commons/9/95/Vue.js_Logo_2.svg" alt="logo-Vue">
+        <img class="ciber-logo" src="https://st1.cibervoluntarios.org/images/logo-sm-en-2021.png" alt="logo-Vue">
+        <p>La prueba consiste en un formulario desarrollado en Vue que funciona en 4 pasos: </p>
+        <ol>
+            <li><b>Datos Básicos:</b> Nombre(Obligatorio), Apellidos(Obligatorio), Observaciones.</li>
+            <li><b>ODSs Favoritos:</b> En una cuadrícula con todos los ODS hay que seleccionar como mínimo 1 y como máximo 3, te adjunto un zip de assets (Obligatorio, claro, tiene un mínimo de selección)</li>
+            <li><b>Personaje Favorito de Futurama:</b> Para esto tienes que usar la api <a href="https://futuramaapi.herokuapp.com">https://futuramaapi.herokuapp.com/</a>, simplemente seleccionar de un desplegable cuál es tu personaje favorito (si ves que la api no te funciona o cualquier cosa avísame y te paso otra)</li>
+            <li><b>Resumen:</b> Una vista donde puedo ver toda la selección.</li>
+        </ol>
+        <router-link to="/contacto" class="start">Comnenzar formulario</router-link>
     </template>
     
     <style scoped>
-      .wrapper{
-        padding: 1rem;
-        border: 1px solid #000;
-        max-width: 900px;
-        margin: 2rem auto;
-        position: relative;
+      img{
+        margin-top: 2rem;
+        max-width: 150px;
       }
-      h5{
-        position: absolute;
-        top: -15px;
-        left: 10px;
-        background-color: #fff;
-        padding: 0 1rem;
+      img:hover{
+        filter: drop-shadow(0 0 25px #68daa7);
+        transition: all 0.3s;
       }
-      span{
-        display: block;
-      }
-  
-      .grid{
-        padding: 1rem;
-        display: grid;
-        gap: 1rem;
-        grid-template-columns: repeat(3, 1fr);
-      }
-  
-      .grid img{
-        width: 100%;
-      }
-  
-      .card{
-        max-width: 500px;
+      ol{
+        max-width: 600px;
+        text-align: left;
         margin: 0 auto;
       }
-  
-      .card img{
-        width: auto;
-        max-height: 300px;
-        max-width: 100%;
-        margin-bottom: 1rem;
+      li{
+        margin: 1rem 0;
+      }
+      p{
+        margin-top: 2rem;
+      }
+      .start{
+        display: inline-block;
+        margin-top: 1rem;
+        background-color: #68daa7;
+        padding: 1rem;
+        border-radius: 0.5rem;
+        color: #fff;
+      }
+      .start:hover{
+        background-color: #229c65;
+        transition: all 0.3s;
+      }
+      .ciber-logo{
+        max-width: 300px;
+      }
+      .ciber-logo:hover{
+        filter: drop-shadow(0 0 25px #ff9483);
+        transition: all 0.3s;
       }
   
     </style>

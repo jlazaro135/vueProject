@@ -1,14 +1,13 @@
 <script>
   import {checkComments} from '../assets/js/utils'
-  let dataContact = JSON.parse(localStorage.dataContact)
-  let dataOds = JSON.parse(localStorage.dataOds)
-  let dataCharacter = JSON.parse(localStorage.dataCharacter)
-
   export default {
     name: "Resume",
     props: {
     },
     data(){
+      let dataContact = JSON.parse(localStorage.dataContact)
+      let dataOds = JSON.parse(localStorage.dataOds)
+      let dataCharacter = JSON.parse(localStorage.dataCharacter)
       return {
         name: dataContact.name,
         surname: dataContact.surname,
@@ -27,6 +26,10 @@
   </script>
   
   <template>
+    <router-link class="link" to="/">Ir a Inicio</router-link>
+    <router-link class="link" to="/contacto">Ir a datos contacto</router-link>
+    <router-link class="link" to="/objetivos-desarrollo">Ir a objetivos de desarrollo</router-link>
+    <router-link class="link" to="/personaje-favorito">Ir a personaje favorito</router-link>
     <h2>Resumen</h2>
 
     <div class="wrapper">
@@ -97,5 +100,10 @@
       margin-bottom: 1rem;
     }
 
+    .link{
+      display: inline-block;
+      margin: 1rem 1rem;
+      text-decoration: underline;
+    }
   </style>
   

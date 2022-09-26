@@ -62,6 +62,8 @@ import Button from './Button.vue';
     }
     .grid{
         width: 100%;
+        max-width: 800px;
+        margin: 0 auto;
         display: grid;
         grid-template-columns: repeat( auto-fit, minmax(250px, 1fr) );
         gap: 1rem;
