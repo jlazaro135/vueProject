@@ -10,12 +10,13 @@ export default {
       errors: [],
       name: null,
       surname: null,
-      comments: null
+      comments: null,
+      link: '#'
     }
   },
   methods:{
     checkForm: function (e) {
-      if (this.name && this.age) {
+      if (this.name && this.surname) {
         return true;
       }
 
@@ -23,11 +24,14 @@ export default {
 
       if (!this.name) {
         this.errors.push('El nombre es obligatorio.');
+        this.link = '#'
       }
-      if (!this.age) {
+      if (!this.surname) {
         this.errors.push('La edad es obligatoria.');
+        this.link = '#'
       }
 
+      this.link = '/objetivos-desarrollo'
       e.preventDefault();
     }
   }
@@ -36,12 +40,6 @@ export default {
 
 <template>
   <h2>Formulario de contacto</h2>
-  <form
-  id="form"
-  @submit="checkForm"
-  action="https://vuejs.org/"
-  method="post"
-  >
 
   <p v-if="errors.length">
     <b>Por favor, corrija el(los) siguiente(s) error(es):</b>
@@ -49,7 +47,6 @@ export default {
       <li v-for="error in errors">{{ error }}</li>
     </ul>
   </p>
-
 
     <div>
       <label class="form-label" for="name">Nombre <small>(obligatorio)</small></label>
@@ -85,9 +82,11 @@ export default {
       </textarea>
     </div>
 
-  <Button textButton="Siguiente paso"></Button>
-
-  </form>
+    
+      <router-link @click="checkForm" :to="link">Esto es un click</router-link>
+    <Button textButton="Siguiente paso">
+    </Button>
+  
 </template>
 
 <style scoped>

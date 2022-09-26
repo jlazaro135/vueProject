@@ -1,22 +1,31 @@
-import { createApp, VueElement } from 'vue'
+import { createApp } from 'vue'
 import { createRouter, createWebHashHistory } from 'vue-router'
 import App from './App.vue'
 import 'bootstrap/dist/css/bootstrap.css'
 import './style.css'
 import Form from './components/Form.vue'
+import Ods from './components/Ods.vue'
+import Character from './components/Character.vue'
+import Resume from './components/Resume.vue'
 
-// Componentes
-
-const Detail = {template: '<h2>Esto es una vista de detalles</h2>'}
-
+const Home = { template: '<h2>Esto es la Home</h2>' }
 
 // definir objetos rutas 
 const routes = [
     {
-        path: '/', component: Form
+        path: '/', component: Home
     },
     {
-        path: '/detalle', component: Detail
+        path: '/contacto', component: Form
+    },
+    {
+        path: '/objetivos-desarrollo', component: Ods
+    },
+    {
+        path: '/personaje-favorito', component: Character
+    },
+    {
+        path: '/resumen', component: Resume
     }
 ]
 
