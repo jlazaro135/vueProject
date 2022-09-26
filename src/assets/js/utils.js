@@ -3,3 +3,10 @@ export function arrayRemove(arr, value) {
         return ele != value; 
     });
 }
+
+export function checkComments(data, text){
+    if(!data || data.trim().length === 0){
+      return text
+    }
+    return text = data
+}

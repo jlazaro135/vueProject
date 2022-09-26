@@ -9,7 +9,9 @@ import Button from './Button.vue';
     },
     data(){
       return {
-        arrImg: [],
+        arrSrc: [],
+        dataOds: null,
+        error: null,
       }
     },
     methods: {
@@ -17,16 +19,28 @@ import Button from './Button.vue';
       return `src/assets/img/S-WEB-Goal-${id}.png`;
     },
     SelectOds(e){
-      if(this.arrImg.length < 3 || this.arrImg.includes(e.target.alt)){
-        if(!this.arrImg.includes(e.target.alt)){
-        this.arrImg.push(e.target.alt)
+      this.error = null
+      let url = e.target.src.substring(e.target.src.lastIndexOf('/'))
+      if(this.arrSrc.length < 3 || this.arrSrc.includes(url)){
+        if(!this.arrSrc.includes(url)){
+        this.arrSrc = [...this.arrSrc, url]
         e.target.classList.add('selected')
-        console.log(this.selected)
         return
         }
-      this.arrImg.splice(this.arrImg.indexOf(e.target.alt), 1)
+      this.arrSrc.splice(this.arrSrc.indexOf(url), 1)
       e.target.classList.remove('selected')
       }
+    },
+    checkSelection(){
+      if(this.arrSrc.length >= 1){
+        let dataOds = {
+          'dataOds': this.arrSrc
+        }
+        localStorage.setItem('dataOds', JSON.stringify(dataOds))
+        window.location.href= '/#/personaje-favorito'
+      }
+      this.error = 'Elige al menos un Objetivo de Desarrollo Sostenible';
+      window.scrollTo(0, 0);
     }
   }
 }
@@ -35,10 +49,11 @@ import Button from './Button.vue';
   <template>
     <h2>Objetivos de desarrollo sostenible</h2>
     <p>Seleccciona como mínimo un objetivo y como máximo tres</p>
+    <div v-if="this.error" class="alert alert-danger alert-dismissible">{{ error }}</div>
     <div class="grid">
         <img v-for="i in 17" :key="i" :src="imagePath(i)" @click="SelectOds" :alt="'ods'+ (i)">
     </div>
-    <Button textButton="Siguiente paso"></Button>
+    <Button @click="checkSelection" textButton="Siguiente paso"></Button>
   </template>
   
   <style scoped>

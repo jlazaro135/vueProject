@@ -17,7 +17,4 @@ export default{
 </template>
 
 <style scoped>
-  .container{
-    min-height: 10000px
-  }
 </style>

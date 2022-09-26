@@ -8,16 +8,22 @@
     data(){
       return {
         errors: [],
+        dataContact: null,
         name: null,
         surname: null,
         comments: null,
-        link: '#',
       }
     },
     methods:{
       checkForm: function () {
         if (this.name && this.surname) {
-          window.location.href = '/#/objetivo-desarrollos'
+          this.dataContact = {
+            'name': this.name,
+            'surname': this.surname,
+            'comments': this.comments
+          }
+          localStorage.setItem('dataContact', JSON.stringify(this.dataContact))
+          window.location.href = '/#/objetivos-desarrollo'
         }
 
         this.errors = [];
@@ -26,7 +32,7 @@
           this.errors.push('El nombre es obligatorio.');
         }
         if (!this.surname) {
-          this.errors.push('La edad es obligatoria.');
+          this.errors.push('El apellido es obligatorio.');
         }
       }
     }
@@ -37,12 +43,12 @@
   <h2>Formulario de contacto</h2>
 
   <div class="form-wrapper">
-    <p v-if="errors.length">
-    <b>Por favor, corrija el(los) siguiente(s) error(es):</b>
+    <div v-if="errors.length" class="alert alert-danger">
+    <b>Los siguientes datos son necesarios:</b>
     <ul>
       <li v-for="error in errors">{{ error }}</li>
     </ul>
-  </p>
+  </div>
   
   <div>
     <label class="form-label" for="name">Nombre <small>(obligatorio)</small></label>
@@ -79,7 +85,7 @@
   </div>
   </div>
   
-  <Button @click="checkForm" v-if="validation" :to="link" textButton="Siguiente paso"></Button>
+  <Button @click="checkForm" textButton="Siguiente paso"></Button>
 </template>
 
 <style scoped>
@@ -116,4 +122,7 @@ small{
   display: block;
 }
 
+ul{
+  list-style: none;
+}
 </style>

@@ -1,18 +1,27 @@
 <script>
+  import {checkComments} from '../assets/js/utils'
+  let dataContact = JSON.parse(localStorage.dataContact)
+  let dataOds = JSON.parse(localStorage.dataOds)
+  let dataCharacter = JSON.parse(localStorage.dataCharacter)
+
   export default {
     name: "Resume",
     props: {
     },
     data(){
       return {
-        finalData: [],
-        speices: "Nombre por defecto",
-        img: "https://vignette.wikia.nocookie.net/en.futurama/images/f/f2/PhilipJ.Fry.png/revision/latest?cb=20110916120042",
-        description: "Esto es la descripción",
-        change: false
+        name: dataContact.name,
+        surname: dataContact.surname,
+        comments: checkComments(dataContact.comments, 'No hay observaciones'),
+        ods: dataOds.dataOds,
+        characterName: dataCharacter.name,
+        characterImg: dataCharacter.img
       }
     },
     methods: {
+      imagePath: function(path){
+      return `src/assets/img${path}`;
+      },
     },
   }
   </script>
@@ -22,25 +31,23 @@
 
     <div class="wrapper">
       <h5>Datos de contacto</h5>
-      <p><span><strong>Nombre y apellidos:</strong></span> Fulano de tal</p>
-      <p><span><strong>Observaciones:</strong></span> Esto es una prueba de Vue y tal y cual</p>
+      <p><span><strong>Nombre y apellidos:</strong></span> {{ name }} {{ surname}}</p>
+      <p><span><strong>Observaciones:</strong></span> {{ comments }}</p>
     </div>
 
     <div class="wrapper">
       <h5>Objetivos seleccionados</h5>
       <div class="grid">
-        <img src="../assets/img/S-WEB-Goal-1.png" alt="">
-        <img src="../assets/img/S-WEB-Goal-1.png" alt="">
-        <img src="../assets/img/S-WEB-Goal-1.png" alt="">
+        <img v-for="index in ods.length" :key="index" :src="imagePath(ods[index-1])" alt="ods">
       </div>
     </div>
 
     <div class="wrapper">
       <h5>Personaje Favorito</h5>
-      <h4>Frai</h4>
+      <h4>{{characterName}}</h4>
       <div class="card">
         <div class="card-body">
-            <img src="https://vignette.wikia.nocookie.net/en.futurama/images/f/f2/PhilipJ.Fry.png/revision/latest?cb=20110916120042" alt="">
+            <img :src="characterImg" alt="">
         </div>
       </div>
     </div>

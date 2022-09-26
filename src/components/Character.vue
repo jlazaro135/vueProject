@@ -12,19 +12,34 @@
       return {
         finalData: [],
         speices: "Nombre por defecto",
-        img: "https://vignette.wikia.nocookie.net/en.futurama/images/f/f2/PhilipJ.Fry.png/revision/latest?cb=20110916120042",
+        img: null,
         description: "Esto es la descripción",
-        change: false
+        change: false,
+        error: null
       }
     },
     methods: {
       onChange(e) {
+            this.error = null
             this.index = e.target.options[e.target.selectedIndex].dataset.key
+            this.name = this.finalData[this.index].Name
             this.speices = this.finalData[this.index].Species
             this.img = this.finalData[this.index].PicUrl
             this.description = this.finalData[this.index].Profession
             this.change = true
+        },
+      checkSelection(){
+        if(!this.change){
+          this.error = 'Elige tu personaje favorito'
+          return
         }
+        let dataCharacter = {
+          'img': this.img,
+          'name': this.name
+        }
+        localStorage.setItem('dataCharacter', JSON.stringify(dataCharacter))
+        window.location.href = '#/resumen'
+      }
     },
     async created() { 
     const response = await fetch(API_URL);
@@ -35,6 +50,7 @@
   </script>
   
   <template>
+    <div v-if="this.error" class="alert alert-danger">{{error}}</div>
     <h2>Personaje de Futurama</h2>
 
     <select @change="onChange($event)" name="character" id="char" class="classic">
@@ -49,6 +65,7 @@
         <p><span><strong>Trabajo: </strong></span> {{description}}</p>
       </div>
     </div>
+    <Button textButton="Ir a Resumen" @click="checkSelection"></Button>
 
   </template>
   
@@ -111,6 +128,11 @@
     }
     span {
       display: block;
+    }
+
+    Button{
+      display: block;
+      margin: 2rem auto!important;;
     }
 
   </style>

@@ -14,29 +14,23 @@ export default {
       type: String,
       default: "",
     },
-    link:{
-      type: String,
-      default: "#"
-    }
   }
 }
 </script>
 
 <template>
-  <router-link :class="btnClass" :to="link" @click="event">{{textButton}}</router-link>
+  <button :class="btnClass" @click="event">{{textButton}}</button>
 </template>
 
 <style scoped>
-
-.primary{
-  border-radius: 0.5rem;
-  display: block;
-  margin: 1rem auto;
-  padding: 1rem;
+button{
   text-transform: uppercase;
   font-size: 1.2rem;
   transition: all 0.2s ease-in;
   max-width: 400px;
+}
+.primary{
+  margin: 2rem 0;
   background-color: #ef3e34;
   border-color: #ef3e34;
   color: #fff;
