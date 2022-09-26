@@ -4,7 +4,6 @@
       name: "Home",
       methods:{
         destroyData(){
-            console.log('jelou')
             let itemsToremove = ['dataCharacter', 'dataContact', 'dataOds']
             itemsToremove.forEach(item => localStorage.removeItem(item))
         }
