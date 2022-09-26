@@ -8,13 +8,9 @@ import Ods from './components/Ods.vue'
 import Character from './components/Character.vue'
 import Resume from './components/Resume.vue'
 
-const Home = { template: '<h2>Esto es la Home</h2>' }
 
 // definir objetos rutas 
 const routes = [
-    {
-        path: '/', component: Home
-    },
     {
         path: '/contacto', component: Form
     },

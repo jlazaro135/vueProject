@@ -1,96 +1,89 @@
 <script>
-  import MyButton from './MyButton.vue'
-export default {
-  name: "Form",
-  components:{
-    Button: MyButton
-  },
-  data(){
-    return {
-      errors: [],
-      name: null,
-      surname: null,
-      comments: null,
-      link: '#'
-    }
-  },
-  methods:{
-    checkForm: function (e) {
-      if (this.name && this.surname) {
-        return true;
+  import Button from './Button.vue'
+  export default {
+    name: "Form",
+    components:{
+      Button
+    },
+    data(){
+      return {
+        errors: [],
+        name: null,
+        surname: null,
+        comments: null,
+        link: '#',
       }
+    },
+    methods:{
+      checkForm: function () {
+        if (this.name && this.surname) {
+          window.location.href = '/#/objetivo-desarrollos'
+        }
 
-      this.errors = [];
+        this.errors = [];
 
-      if (!this.name) {
-        this.errors.push('El nombre es obligatorio.');
-        this.link = '#'
+        if (!this.name) {
+          this.errors.push('El nombre es obligatorio.');
+        }
+        if (!this.surname) {
+          this.errors.push('La edad es obligatoria.');
+        }
       }
-      if (!this.surname) {
-        this.errors.push('La edad es obligatoria.');
-        this.link = '#'
-      }
-
-      this.link = '/objetivos-desarrollo'
-      e.preventDefault();
     }
   }
-}
 </script>
 
 <template>
   <h2>Formulario de contacto</h2>
 
-  <p v-if="errors.length">
+  <div class="form-wrapper">
+    <p v-if="errors.length">
     <b>Por favor, corrija el(los) siguiente(s) error(es):</b>
     <ul>
       <li v-for="error in errors">{{ error }}</li>
     </ul>
   </p>
-
-    <div>
-      <label class="form-label" for="name">Nombre <small>(obligatorio)</small></label>
-      <input
-      class="form-control"
-      id="name"
-      v-model="name"
-      type="text"
-      name="name"
-    >
-    </div>
-
-    <div>
-      <label class="form-label" for="surname">Apellidos <small>(obligatorio)</small></label>
-      <input
-        class="form-control"
-        id="surname"
-        v-model="surname"
-        type="text"
-        name="surname"
-      >
-    </div>
-
-    <div>
-      <label class="form-label" for="comments">Observaciones</label>
-      <textarea
-        class="form-control"
-        id="comments"
-        v-model= "comments"
-        name="comments"
-        maxlength="250"
-      >
-      </textarea>
-    </div>
-
-    
-      <router-link @click="checkForm" :to="link">Esto es un click</router-link>
-    <Button textButton="Siguiente paso">
-    </Button>
   
+  <div>
+    <label class="form-label" for="name">Nombre <small>(obligatorio)</small></label>
+    <input
+    class="form-control"
+    id="name"
+    v-model="name"
+    type="text"
+    name="name"
+  >
+  </div>
+
+  <div>
+    <label class="form-label" for="surname">Apellidos <small>(obligatorio)</small></label>
+    <input
+      class="form-control"
+      id="surname"
+      v-model="surname"
+      type="text"
+      name="surname"
+    >
+  </div>
+
+  <div>
+    <label class="form-label" for="comments">Observaciones</label>
+    <textarea
+      class="form-control"
+      id="comments"
+      v-model= "comments"
+      name="comments"
+      maxlength="250"
+    >
+    </textarea>
+  </div>
+  </div>
+  
+  <Button @click="checkForm" v-if="validation" :to="link" textButton="Siguiente paso"></Button>
 </template>
 
 <style scoped>
-form{
+.form-wrapper{
   width: 100%;
   max-width: 400px;
   margin: 0 auto;

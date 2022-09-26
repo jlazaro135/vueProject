@@ -1,10 +1,10 @@
 <script>
-  import MyButton from './MyButton.vue'
+  import Button from './Button.vue'
   const API_URL= 'https://futuramaapi.herokuapp.com/api/v2/characters'
   export default {
     name: "Character",
     components:{
-      Button: MyButton
+      Button
     },
     props: {
     },

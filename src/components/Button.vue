@@ -1,6 +1,6 @@
 <script>
 export default {
-  name: "MyButton",
+  name: "Button",
   props: {
     textButton: {
       type: String,
@@ -12,22 +12,31 @@ export default {
     },
     event: {
       type: String,
-      default: "submit",
+      default: "",
+    },
+    link:{
+      type: String,
+      default: "#"
     }
   }
 }
 </script>
 
 <template>
-  <button :class="btnClass" :type="event">{{textButton}}</button>
+  <router-link :class="btnClass" :to="link" @click="event">{{textButton}}</router-link>
 </template>
 
 <style scoped>
-button{
-  transition: all 0.2s ease-in;
-  min-width: 300px;
-}
+
 .primary{
+  border-radius: 0.5rem;
+  display: block;
+  margin: 1rem auto;
+  padding: 1rem;
+  text-transform: uppercase;
+  font-size: 1.2rem;
+  transition: all 0.2s ease-in;
+  max-width: 400px;
   background-color: #ef3e34;
   border-color: #ef3e34;
   color: #fff;
