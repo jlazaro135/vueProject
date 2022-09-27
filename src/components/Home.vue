@@ -25,7 +25,7 @@
             <li><b>Personaje Favorito de Futurama:</b> Para esto tienes que usar la api <a href="https://futuramaapi.herokuapp.com">https://futuramaapi.herokuapp.com/</a>, simplemente seleccionar de un desplegable cuál es tu personaje favorito (si ves que la api no te funciona o cualquier cosa avísame y te paso otra)</li>
             <li><b>Resumen:</b> Una vista donde puedo ver toda la selección.</li>
         </ol>
-        <router-link to="/contacto" class="start">Comnenzar formulario</router-link>
+        <router-link to="/contacto" class="start">Comenzar formulario</router-link>
     </template>
     
     <style scoped>
