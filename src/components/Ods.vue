@@ -30,6 +30,10 @@ import Button from './Button.vue';
       this.arrSrc.splice(this.arrSrc.indexOf(url), 1)
       e.target.classList.remove('selected')
       }
+      if(this.arrSrc.length === 3){
+        this.error = 'Has elegido el máximo de Objetivos posibles. Deselecciona uno de los objetivos seleccionados y selecciona el nuevo'
+        window.scrollTo(0, 0);
+      }
     },
     checkSelection(){
       if(this.arrSrc.length >= 1){
@@ -78,8 +82,6 @@ import Button from './Button.vue';
     img:hover{
         transition: all 0.5s;
         filter: grayscale(0.5);
-        transform: translate(-8px, -8px);
-        box-shadow: 8px 8px rgba(56, 56, 56, 0.88);
     }
     .selected{
         filter: grayscale(0);
