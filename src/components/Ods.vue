@@ -31,7 +31,7 @@ import Button from './Button.vue';
       e.target.classList.remove('selected')
       }
       if(this.arrSrc.length === 3){
-        this.error = 'Has elegido el máximo de Objetivos posibles. Deselecciona uno de los objetivos seleccionados y selecciona el nuevo'
+        this.error = 'Has elegido el máximo de Objetivos posibles. Si deseas cambiar de objetivo, primero deselecciona uno de los seleccionados'
         window.scrollTo(0, 0);
       }
     },
