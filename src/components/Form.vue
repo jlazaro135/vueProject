@@ -24,7 +24,7 @@
             'comments': this.comments
           }
           localStorage.setItem('dataContact', JSON.stringify(this.dataContact))
-          window.location.href = '/#/objetivos-desarrollo'
+          window.location.href = '/#/animales'
         }
 
         this.errors = [];

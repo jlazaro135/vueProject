@@ -15,15 +15,14 @@
     </script>
     
     <template>
-        <h2>Prueba Frontend: APP en Vue</h2>
+        <h2>Formulario Vue</h2>
         <img src="https://upload.wikimedia.org/wikipedia/commons/9/95/Vue.js_Logo_2.svg" alt="logo-Vue">
-        <img class="ciber-logo" src="https://st1.cibervoluntarios.org/images/logo-sm-en-2021.png" alt="logo-Vue">
         <p>La prueba consiste en un formulario desarrollado en Vue que funciona en 4 pasos: </p>
         <ol>
             <li><b>Datos Básicos:</b> Nombre(Obligatorio), Apellidos(Obligatorio), Observaciones.</li>
-            <li><b>ODSs Favoritos:</b> En una cuadrícula con todos los ODS hay que seleccionar como mínimo 1 y como máximo 3, te adjunto un zip de assets (Obligatorio, claro, tiene un mínimo de selección)</li>
-            <li><b>Personaje Favorito de Futurama:</b> Para esto tienes que usar la api <a href="https://futuramaapi.herokuapp.com">https://futuramaapi.herokuapp.com/</a>, simplemente seleccionar de un desplegable cuál es tu personaje favorito (si ves que la api no te funciona o cualquier cosa avísame y te paso otra)</li>
-            <li><b>Resumen:</b> Una vista donde puedo ver toda la selección.</li>
+            <li><b>Animales:</b> En una cuadrícula con 12 animales disponibles, seleccionando como mínimo 1 y como máximo 3</li>
+            <li><b>Personaje Favorito de Futurama:</b> A través de la api <a href="https://futuramaapi.herokuapp.com">https://futuramaapi.herokuapp.com/</a>, se selecciona el personaje favorito de esta mítica serie de Matt Groening</li>
+            <li><b>Resumen:</b> Una vista donde ver toda la selección. Contará con enlaces a las diferentes vistas del formulario por si se quiere modificar alguna respuesta</li>
         </ol>
         <router-link to="/contacto" class="start">Comenzar formulario</router-link>
     </template>

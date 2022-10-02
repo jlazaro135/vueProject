@@ -1,5 +1,6 @@
 <script>
-  import Button from './Button.vue'
+  import { onBeforeMount } from 'vue'
+import Button from './Button.vue'
   const API_URL= 'https://futuramaapi.herokuapp.com/api/v2/characters'
   export default {
     name: "Character",
@@ -15,7 +16,7 @@
         img: null,
         description: "Esto es la descripción",
         change: false,
-        error: null
+        error: null,
       }
     },
     methods: {
@@ -39,6 +40,9 @@
         }
         localStorage.setItem('dataCharacter', JSON.stringify(dataCharacter))
         window.location.href = '#/resumen'
+      },
+      selectDefault(){
+
       }
     },
     async created() { 

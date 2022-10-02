@@ -4,7 +4,7 @@ import App from './App.vue'
 import 'bootstrap/dist/css/bootstrap.css'
 import './style.css'
 import Form from './components/Form.vue'
-import Ods from './components/Ods.vue'
+import Animals from './components/Animals.vue'
 import Character from './components/Character.vue'
 import Resume from './components/Resume.vue'
 import Home from './components/Home.vue'
@@ -19,7 +19,7 @@ const routes = [
         path: '/contacto', component: Form
     },
     {
-        path: '/objetivos-desarrollo', component: Ods
+        path: '/animales', component: Animals
     },
     {
         path: '/personaje-favorito', component: Character

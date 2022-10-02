@@ -28,7 +28,7 @@
   <template>
     <router-link class="link" to="/">Ir a Inicio</router-link>
     <router-link class="link" to="/contacto">Ir a datos contacto</router-link>
-    <router-link class="link" to="/objetivos-desarrollo">Ir a objetivos de desarrollo</router-link>
+    <router-link class="link" to="/animales">Ir a animales</router-link>
     <router-link class="link" to="/personaje-favorito">Ir a personaje favorito</router-link>
     <h2>Resumen</h2>
 
@@ -39,7 +39,7 @@
     </div>
 
     <div class="wrapper">
-      <h5>Objetivos seleccionados</h5>
+      <h5>Animales seleccionados</h5>
       <div class="grid">
         <img v-for="index in ods.length" :key="index" :src="imagePath(ods[index-1])" alt="ods">
       </div>
@@ -98,6 +98,10 @@
       max-height: 300px;
       max-width: 100%;
       margin-bottom: 1rem;
+    }
+
+    img{
+      filter: saturate(1.2);
     }
 
     .link{
