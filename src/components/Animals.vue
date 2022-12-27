@@ -55,7 +55,7 @@ import Button from './Button.vue';
     <p>Seleccciona como mínimo un animal y como máximo tres</p>
     <div v-if="this.error" class="alert alert-danger alert-dismissible">{{ error }}</div>
     <div class="grid">
-        <img v-for="i in 12" :key="i" :src="imagePath(i)" @click="SelectOds" :alt="'ods'+ (i)">
+        <img v-for="i in 12" :key="i" :src="imagePath(i)" @click="SelectOds" :alt="'ods'+ (i)" width="100" height="100">
     </div>
     <Button @click="checkSelection" textButton="Siguiente paso"></Button>
   </template>
@@ -73,6 +73,8 @@ import Button from './Button.vue';
         gap: 1rem;
     }
     img{
+        width: 100%;
+        background-color: #cacaca;
         max-width: 100%;
         filter: grayscale(1) opacity(0.6);
         height: auto;

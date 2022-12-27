@@ -1,7 +1,6 @@
 <script>
-  import { onBeforeMount } from 'vue'
 import Button from './Button.vue'
-  const API_URL= 'https://futuramaapi.herokuapp.com/api/v2/characters'
+  const API_URL= 'https://thesimpsonsquoteapi.glitch.me/quotes?count=10'
   export default {
     name: "Character",
     components:{
@@ -21,12 +20,13 @@ import Button from './Button.vue'
     },
     methods: {
       onChange(e) {
+        console.log(this.finalData)
             this.error = null
             this.index = e.target.options[e.target.selectedIndex].dataset.key
-            this.name = this.finalData[this.index].Name
+            this.name = this.finalData[this.index].character
             this.speices = this.finalData[this.index].Species
-            this.img = this.finalData[this.index].PicUrl
-            this.description = this.finalData[this.index].Profession
+            this.img = this.finalData[this.index].image
+            this.description = this.finalData[this.index].quote
             this.change = true
         },
       checkSelection(){
@@ -55,18 +55,17 @@ import Button from './Button.vue'
   
   <template>
     <div v-if="this.error" class="alert alert-danger">{{error}}</div>
-    <h2>Personaje de Futurama</h2>
+    <h2>Personaje de los Simpsons</h2>
 
     <select @change="onChange($event)" name="character" id="char" class="classic">
       <option selected disabled>Selecciona una opción</option>
-      <option v-for="(data, index) in finalData" :key="index" :data-key="index">{{data.Name}}</option>
+      <option v-for="(data, index) in finalData" :key="index" :data-key="index">{{data.character}}</option>
     </select>
 
     <div class="card" v-if="change">
       <div class="card-body">
-        <img :src="img"  alt="">
-        <p><strong>Especie:</strong> {{speices}}</p>
-        <p><span><strong>Trabajo: </strong></span> {{description}}</p>
+        <img :src="img"  alt="pic" aspect-ratio="9/16">
+        <p><span><strong>Frase: </strong></span> {{description}}</p>
       </div>
     </div>
     <Button textButton="Ir a Resumen" @click="checkSelection"></Button>
@@ -129,6 +128,7 @@ import Button from './Button.vue'
       max-height: 300px;
       max-width: 100%;
       margin-bottom: 1rem;
+      background-color: #cacaca;
     }
     span {
       display: block;
